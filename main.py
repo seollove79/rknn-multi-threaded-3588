@@ -9,7 +9,7 @@ cap = cv2.VideoCapture(0)
 
 modelPath = "./rknnModel/yolov5s_relu_tk2_RK3588_i8.rknn"
 
-TPEs = 3
+TPEs = 1
 
 pool = rknnPoolExecutor(
     rknnModel=modelPath,
