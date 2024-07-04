@@ -1,6 +1,7 @@
 import cv2
 import time
 from rknnpool import rknnPoolExecutor
+import numpy as np
 
 from func import myFunc
 
@@ -30,10 +31,16 @@ frames, loopTime, initTime = 0, time.time(), time.time()
 while (cap.isOpened()):
     frames += 1
     ret, frame = cap.read()
+
+     # Convert to 4D array (N, C, H, W)
+    frame = np.expand_dims(frame, axis=0)
+
     if not ret:
         break
     pool.put(frame)
     frame, flag = pool.get()
+
+    
     if flag == False:
         break
     cv2.imshow('test', frame)
