@@ -32,9 +32,6 @@ while (cap.isOpened()):
     frames += 1
     ret, frame = cap.read()
 
-     # Convert to 4D array (N, C, H, W)
-    frame = np.expand_dims(frame, axis=0)
-
     if not ret:
         break
     pool.put(frame)
